@@ -6,6 +6,18 @@ IMAGE_NAME = zig-product-service
 TAG = latest
 CONTAINER_NAME = zig-product-container  # Add this line
 
+.PHONY: setup
+setup:
+	@echo "Setting up environment..."
+	@cp -n .env.sample .env || true
+	@echo "Environment file created. Please check .env for your database credentials."
+
+
+
+.PHONY: migrate
+migrate:
+	@echo "Running database migrations..."
+	@env $(shell cat .env 2>/dev/null || true) jetzig database migrate
 
 .PHONY: dev
 dev:
