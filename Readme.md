@@ -44,16 +44,54 @@ created_at: datetime
 updated_at: datetime
 ```
 
+## Environment Setup
+
+1. Create a `.env` file based on the `.env.sample`:
+
+```bash
+cp .env.sample .env
+```
+
+2. Modify the values in `.env` to match your database configuration:
+
+```
+JETQUERY_HOSTNAME=localhost
+JETQUERY_PORT=5432
+JETQUERY_USERNAME=postgres
+JETQUERY_PASSWORD=postgres
+JETQUERY_DATABASE=postgres
+```
+
+3. For Docker, create a `.env.docker` file with appropriate settings.
+
+## Running the Application
+
+### Using the Makefile
+
+```bash
+# Start the development server
+make dev
+
+# Test the API health endpoint
+make test
+
+# Build the Docker image
+make docker-build
+
+# Run the application in Docker
+make docker-run
+```
+
 ## Running with Docker
 
 1. Build the Docker image:
 ```bash
-docker build -t zig-crud .
+make docker-build
 ```
 
 2. Run the container:
 ```bash
-docker run -p 8080:8080 zig-crud
+make docker-run
 ```
 
 3. The API will be available at http://localhost:8080
@@ -64,7 +102,7 @@ docker run -p 8080:8080 zig-crud
 2. Install Jetzig CLI: `git clone https://github.com/jetzig-framework/jetzig`
 3. Set up PostgreSQL database
 4. Run database migration: `jetzig database migrate`
-5. Start the server: `zig build run`
+5. Start the server: `make dev`
 
 ## Database Setup
 

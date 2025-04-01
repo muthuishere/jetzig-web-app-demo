@@ -10,7 +10,7 @@ CONTAINER_NAME = zig-product-container  # Add this line
 .PHONY: dev
 dev:
 	@echo "Starting Jetzig server on $(BASE_URL)..."
-	@jetzig server
+	@env $(shell cat .env 2>/dev/null || true) jetzig server
 
 .PHONY: test
 test:
