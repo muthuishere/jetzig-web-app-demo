@@ -1,0 +1,8 @@
+zig-out/
+zig-cache/
+*.core
+.jetzig
+.zig-cache/
+.env
+.env.docker
+.env.gcp
